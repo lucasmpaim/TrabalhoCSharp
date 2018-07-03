@@ -1,0 +1,28 @@
+﻿<Page x:Class="TrabalhoCSharp.View.ListCategories"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:TrabalhoCSharp.View"
+      xmlns:vm="clr-namespace:TrabalhoCSharp.ViewModel"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="ListCategories">
+
+    <Page.Resources>
+        <vm:ListCategoriesViewModel x:Key="ListCategoriesViewModel"/>
+    </Page.Resources>
+
+    <DataGrid AutoGenerateColumns="True" ItemsSource="{Binding Source={StaticResource ListCategoriesViewModel}, Path=Items}" SelectedIndex="{Binding Source={StaticResource ListCategoriesViewModel}, Path=SelectedIndex}">
+        <DataGrid.Columns>
+            <DataGridTemplateColumn>
+                <DataGridTemplateColumn.CellTemplate>
+                    <DataTemplate>
+                        <Button Content="Deletar" Command="{Binding Source={StaticResource ListCategoriesViewModel}, Path=DeleteCommand}"></Button>
+                    </DataTemplate>
+                </DataGridTemplateColumn.CellTemplate>
+            </DataGridTemplateColumn>
+        </DataGrid.Columns>
+    </DataGrid>
+    
+</Page>
